@@ -36,7 +36,7 @@ extern const HAL& hal;
 #endif
 
 #if RC_MAPPING == RC_MAP_STANDARD
-	static uint8_t pinRcChannel[8] = {0, 1, 2, 3, 4, 5, 6, 7}; // ROLL,PITCH,THROTTLE,YAW,MODE,AUX2,CAMPITCH,CAMROLL
+	static uint8_t pinRcChannel[8] = {0, 1, 2, 3, 4, 7, 6, 5}; // ROLL,PITCH,THROTTLE,YAW,MODE,AUX2,CAMPITCH,CAMROLL
 #elif RC_MAPPING == RC_MAP_GRAUPNER
 	static uint8_t pinRcChannel[8] = {1, 3, 2, 0, 4, 5, 6, 7}; // PITCH,YAW,THROTTLE,ROLL,AUX1,AUX2,CAMPITCH,CAMROLL
 #elif RC_MAPPING == RC_MAP_HITEC
