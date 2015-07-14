@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>APM:Copter - Connecting your components | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components_copter.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components_copter.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components_copter.md">Edit page</a>
+            </div>
+            <h1 id="apmcopter---connecting-your-components">APM:Copter - Connecting your components</h1>
+
+<p>The documentation uses a Crius V2 as example flight controller,
+but the Pin number is the same for all flight controllers.</p>
+
+<h2 id="connecting-the-rc-input">Connecting the RC Input</h2>
+
+<p>By default MegaPirateNG uses PPM RC Input.</p>
+
+<p>Connect your PPM RC Receiver to <code>Pin A8</code> on your flight controller.</p>
+
+<p><img src="../images/connecting_components_rcchannels_ppm.png" tppabs="http://docs.megapirateng.com/images/connecting_components_rcchannels_ppm.png" alt="RC Channels no PPM" /></p>
+
+<p>If you want to use a non PPM RC Receiver you need to change your <a href="general_configuration.htm#rc_input_type_configuration" tppabs="http://docs.megapirateng.com/documentation/general_configuration#rc_input_type_configuration">RC Input Type Configuration</a>
+and connect the RC Receiver like this.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th style="text-align: center">Channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A8</td>
+      <td style="text-align: center">Yaw / Rudder</td>
+    </tr>
+    <tr>
+      <td>A9</td>
+      <td style="text-align: center">Pitch / Elevator</td>
+    </tr>
+    <tr>
+      <td>A10</td>
+      <td style="text-align: center">Throttle</td>
+    </tr>
+    <tr>
+      <td>A11</td>
+      <td style="text-align: center">Aileron</td>
+    </tr>
+    <tr>
+      <td>A12</td>
+      <td style="text-align: center">Mode Switch</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="../images/connecting_components_copter_rcchannels.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_rcchannels.png" alt="RC Channels" /></p>
+
+<h2 id="connecting-motors">Connecting Motors</h2>
+
+<p><img src="../images/connecting_components_copter_motors_rotation.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_rotation.png" alt="Rotation informations" /></p>
+
+<h3 id="quad-copter-in--and-x-configuration">Quad-Copter in + and X configuration</h3>
+<p><img src="../images/connecting_components_copter_motors_quad.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_quad.png" alt="Motor for Quad Copter" /></p>
+
+<h3 id="tri-copter">Tri-Copter</h3>
+<p><img src="../images/connecting_components_copter_motors_tri.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_tri.png" alt="Motor and Servo for Tri Copter" /></p>
+
+<h3 id="hexa-copter">Hexa-Copter</h3>
+<p><img src="../images/connecting_components_copter_motors_hexa.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_hexa.png" alt="Motor for Hexa Copter" /></p>
+
+<h3 id="octo-copter">Octo-Copter</h3>
+<p><img src="../images/connecting_components_copter_motors_octo.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_octo.png" alt="Motor for Octo Copter" /></p>
+
+<h3 id="v-octo-copter-y6-and-x8">V Octo-Copter, Y6 and X8</h3>
+<p><img src="../images/connecting_components_copter_motors_special.png" tppabs="http://docs.megapirateng.com/images/connecting_components_copter_motors_special.png" alt="Motor for Octo Copter" /></p>
+
+        </div>
+    </body>
+
+</html>

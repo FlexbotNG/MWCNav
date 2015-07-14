@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>Tips and tricks | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/tipsntricks.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/tipsntricks.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/tipsntricks.md">Edit page</a>
+            </div>
+            <h1 id="tips-and-tricks">Tips and tricks</h1>
+
+<p>This site tries to provide some code changes which could give you a nice extra feature.
+But which is not really used by many so not an official setting.</p>
+
+<h2 id="get-external-leds-and-piezo-buzzer-working-with-crius-11">Get external LEDs and piezo buzzer working with Crius 1.1</h2>
+
+<p>The Crius board only allows you to connect <code>A0 to A5</code> so the default config does not work.
+Here are the code-changes necessary to still have external LEDs and a piezo buzzer.</p>
+
+<p><code>config.h</code> changes:</p>
+
+<pre><code>#define PIEZO_PIN 46
+#define COPTER_LED_1 AN2 // Motor or Aux LED
+#define COPTER_LED_2 AN3 // Motor LED
+#define COPTER_LED_3 AN4 // Motor or GPS LED
+#define COPTER_LED_4 AN7 // Motor LED
+#define COPTER_LED_5 -1 // Motor LED
+#define COPTER_LED_6 -1 // Motor LED
+#define COPTER_LED_7 -1 // Motor LED
+#define COPTER_LED_8 -1 // Motor LED
+</code></pre>
+
+<p><code>define.h</code> changes:</p>
+
+<pre><code>#define AN5 46
+// #define PIEZO_PIN 32 //Last pin on the back ADC connector
+#define PIEZO_PIN 46
+</code></pre>
+
+<p>After this changes, a compile and flash you can connect the arming led on <code>A3</code>, the GPS led on <code>A4</code> and the Buzzer on <code>PIN 46</code>.
+You also need to set the <code>Led Mode</code> to <code>127</code> via Advanced parameters in the Mission Planner software.</p>
+
+<h2 id="use-an-external-compass-instead-of-using-the-internal">Use an external compass instead of using the internal</h2>
+
+<p>Sometimes you want to use an external compass instead of the flight controllers on board one.
+In most cases its not really needed, but you have the option.</p>
+
+<p><code>libraries\AP_InertialSensor\AP_InertialSensor_MPU6000_I2C.cpp</code> changes:</p>
+
+<p><code>//#define DISABLE_INTERNAL_MAG</code> to <code>#define DISABLE_INTERNAL_MAG</code></p>
+
+<p>After this changes, a compile and flash you also need to erase and reset to factory defaults via Mission Planner.</p>
+
+<h2 id="battery-voltage-meter-on-analog-pin-a1">Battery Voltage Meter on Analog PIN A1</h2>
+
+<p>That is just a hardware modification. Basicly you will need two resistors (R1 of 120k and R2 of 27k) hooked up like this:</p>
+
+<p><img src="../images/battery_voltage_divider.png" tppabs="http://docs.megapirateng.com/images/battery_voltage_divider.png" alt="Resistor Voltage Divider" /></p>
+
+<p>So now you can go to APM Planner -&gt; Initial Setup -&gt; Optional Setup -&gt; Battery Monitor -&gt; Advanced.
+There you change these stuff:</p>
+
+<pre><code>Monitor     =&gt; 3: Battery Voltage
+Sensor      =&gt; 0: Other
+APM Version =&gt; 0: APM1
+Voltage Pin =&gt; 1
+</code></pre>
+
+<p>So now it will start measuring battery voltage. But you need to calibrate the software. So get a multimeter and measure the voltage across the battery. I recomend to use a fully charged battery (3s will give arround 12.6V and 4s will give you arround 16.4V). After you get a reference, write it on field <code>1. Measured Battery Voltage</code> So now it should change automatically the parameter <code>3. Voltage Divider (calced)</code> and start measuring the correct voltage on <code>2. Voltage from Autopilot (calced)</code></p>
+
+<p><img src="../images/apm_battery_pin.png" tppabs="http://docs.megapirateng.com/images/apm_battery_pin.png" alt="APM Planner Battery Monitor" /></p>
+
+<p>You can also use other Analog Ports ( I use A0 ) for Battery Measuring. Just change the Voltage Pin Number for that.</p>
+
+<p>There is other stuff you can configure related to the Battery Voltage Monitor. For more details take a look on the oficial documentation for <a href="javascript:if(confirm('http://copter.ardupilot.com/wiki/common-measuring-battery-voltage-and-current-consumption-with-apm/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://copter.ardupilot.com/wiki/common-measuring-battery-voltage-and-current-consumption-with-apm/'" tppabs="http://copter.ardupilot.com/wiki/common-measuring-battery-voltage-and-current-consumption-with-apm/">Power Module set-up to measure battery voltage and current consumption</a></p>
+
+<h2 id="rssi-input-on-analog-pin-a0">RSSI input on analog PIN A0</h2>
+
+<p><code>config.h</code> changes:</p>
+
+<p>Around line 208 you will find:</p>
+
+<pre><code>#elif CONFIG_HAL_BOARD == HAL_BOARD_MPNG
+ # define A_LED_PIN        13
+</code></pre>
+
+<p>Change to:</p>
+
+<pre><code>#elif CONFIG_HAL_BOARD == HAL_BOARD_MPNG
+ # define RECEIVER_RSSI_PIN 0
+ # define A_LED_PIN        13
+</code></pre>
+
+<p><code>parameters.ino</code> changes:</p>
+
+<p>Around line 192 you will find:</p>
+
+<pre><code>GSCALAR(rssi_pin,            "RSSI_PIN",         -1),
+</code></pre>
+
+<p>Change to:</p>
+
+<pre><code>GSCALAR(rssi_pin,            "RSSI_PIN",         RECEIVER_RSSI_PIN),
+</code></pre>
+
+<p>After that you can enable the RSSI_PIN via MissionPlanner.
+To test if it works you can connect a 1.5v battery on <code>A0</code></p>
+
+
+        </div>
+    </body>
+
+</html>

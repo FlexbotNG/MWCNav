@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>General Configuration | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/general_configuration.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/general_configuration.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/general_configuration.md">Edit page</a>
+            </div>
+            <h1 id="general-configuration">General Configuration</h1>
+
+<p>All configuration here requires you to modify the source-code of MegaPirateNG. You need to save the changes and recompile / upload this changes with Arduino IDE.</p>
+
+<h2 id="changing-board-type">Changing Board Type</h2>
+
+<p>MegaPirateNG supports different types of flight controller boards. In order to get the Firmware running you have to specify which board you are using.</p>
+
+<p>After opening the desired Sketch change to the <code>APM_Config.h</code> file in the tab-bar.
+In this file you need to change the line <code>#define MPNG_BOARD_TYPE   RCTIMER_CRIUS_V2</code> with the
+board you have.</p>
+
+<p>The file also contains the list of supported boards in a comment block bellow the configuration define itself.</p>
+
+<p>For example (using a crius v1):</p>
+
+<pre><code>// Select Megapirate board type:
+#define MPNG_BOARD_TYPE   CRIUS_V1
+/*
+   RCTIMER_CRIUS_V2    -- (DEFAULT!!!) Use ONLY for RCTimer CRIUS V2 board
+   CRIUS_V1            -- Use this define for RCTimer CRIUS V1(1.1) board and all HobbyKing AIOP boards
+   HK_RED_MULTIWII_PRO -- HobbyKing MultiWii Pro board with ITG3205 and BMA180, BMP085 sensors
+   BLACK_VORTEX
+   MULTIWII_PRO_EZ3_BLACK  -- ReadyToFlyQuads - MultiWii PRO Ez3.0 Blacked MAG Editon Flight Controller w/ GPS Option (NO COMPASS)
+   PARIS_V5_OSD            -- PARIS v5 Mega iOSD - http://www.multiwiicopter.com/products/multiwii-paris-v5-mega-iosd-gps-autopilot
+*/
+</code></pre>
+
+<h2 id="select-frame-type">Select frame type</h2>
+
+<p>If you use <strong><em>APM:Copter</em></strong> and you are not using a quad-copter you need to set the correct frame configuration for that frame.
+If you do use a quad-copter, you can ignore this setting.</p>
+
+<p>The configuration option is also located in the <code>APM_Config.h</code> file.</p>
+
+<p>If you want to use, for example, a tri-copter you need to change the <code>//#define FRAME_CONFIG HEXA_FRAME</code> line.
+First of you need to remove the <code>//</code> before the line to uncomment and use the configuration and set the value to <code>TRI_FRAME</code></p>
+
+<p>For example (using a tri-copter):</p>
+
+<pre><code>#define FRAME_CONFIG TRI_FRAME
+/*
+ *  options:
+ *  QUAD_FRAME
+ *  TRI_FRAME
+ *  HEXA_FRAME
+ *  Y6_FRAME
+ *  OCTA_FRAME
+ *  OCTA_QUAD_FRAME
+ *  HELI_FRAME
+ */
+</code></pre>
+
+<h2 id="rc-input-type-configuration">RC Input type configuration</h2>
+
+<p>Based on the type of your Receiver you have 3 possible configuration options.</p>
+
+<ol>
+  <li>Serial PPM on A8 pin selected (default)</li>
+  <li>Serial PPM (CPPM) on PL1 pin (only Crius V2)</li>
+  <li>Regular PWM inputs A8-A15</li>
+</ol>
+
+<p>If you want to change the type to something other than the default you have to edit the file: <code>libraries\AP_HAL_MPNG\RCInput_MPNG.cpp</code></p>
+
+<h3 id="serial-ppm-cppm-on-pl1-pin-only-crius-v2">Serial PPM (CPPM) on PL1 pin (only Crius V2)</h3>
+
+<p>Change <code>#define SERIAL_PPM SERIAL_PPM_ENABLED</code> to <code>#define SERIAL_PPM SERIAL_PPM_ENABLED_PL1</code></p>
+
+<h3 id="regular-pwm-inputs-a8-a15">Regular PWM inputs A8-A15</h3>
+
+<p>Change <code>#define SERIAL_PPM SERIAL_PPM_ENABLED</code> to <code>#define SERIAL_PPM SERIAL_PPM_DISABLED</code></p>
+
+<h2 id="change-the-rc-input-channel-order">Change the RC input channel order</h2>
+
+<p>MegaPirateNG uses the default RC input channel order used by APM hardware, but you are able to change it if you like.</p>
+
+<p>The configuration is located in the <code>libraries\AP_HAL_MPNG\RCInput_MPNG.cpp</code> file.</p>
+
+<p>If you want to use, for example, the multiwii channel order you need to change the <code>//#define RC_MAPPING RC_MAP_STANDARD</code> line.
+First of you need to remove the <code>//</code> before the line to uncomment and use the configuration and set the value to <code>RC_MAP_MULTIWII</code></p>
+
+<p>For example (multiwii):</p>
+
+<pre><code>#define RC_MAPPING RC_MAP_MULTIWII
+/*
+        RC_MAP_STANDARD 1
+        RC_MAP_GRAUPNER 2
+        RC_MAP_HITEC 3
+        RC_MAP_MULTIWII 4
+        RC_MAP_JR 5
+*/
+</code></pre>
+
+        </div>
+    </body>
+
+</html>

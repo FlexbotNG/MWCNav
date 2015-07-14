@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>Connecting your components | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/connecting_components.md">Edit page</a>
+            </div>
+            <h1 id="connecting-your-components">Connecting your components</h1>
+
+<h2 id="serial-ports">Serial Ports</h2>
+
+<ul>
+  <li>Serial0 (RX0,TX0) - USB, OSD (Minim OSD) or Telemetry (3DR, Xbee, Bluetooth)</li>
+  <li>Serial1 (RX1,TX1) - <strong><em>Serial1 is currently not supported</em></strong> - Planned for non Mavlink compatible OSD鈥檚 (Remzibi, E-OSD, FrSky)</li>
+  <li>Serial2 (RX2,TX2) - GPS</li>
+  <li>Serial3 (RX3,TX3) - OSD (Minim OSD) or Telemetry (3DR, Xbee, Bluetooth)</li>
+</ul>
+
+<h2 id="rc-input-and-outputs-motors-servos">RC Input and Outputs (Motors, Servos)</h2>
+
+<p>Please refer to the corresponding page for your Platform:</p>
+
+<ul>
+  <li><a href="connecting_components_copter.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components_copter">APM:Copter</a></li>
+  <li><a href="connecting_components_plane.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components_plane">APM:Plane</a></li>
+</ul>
+
+<h2 id="sonar">Sonar</h2>
+
+<p>Using a sonar with MegaPirateNG is currently not supported.</p>
+
+<h2 id="camera-shutter">Camera Shutter</h2>
+
+<p>MegaPirateNG only supports relay type shutters.</p>
+
+<p>You can connect the shutter device at <code>Pin D46</code> on your flight controller and select appropriate Shutter in Camera Gimbal settings in Mission Planner.</p>
+
+        </div>
+    </body>
+
+</html>

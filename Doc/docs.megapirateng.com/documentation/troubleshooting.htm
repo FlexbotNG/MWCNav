@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>Troubleshooting | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/troubleshooting.md  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/troubleshooting.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/troubleshooting.md">Edit page</a>
+            </div>
+            <h1 id="troubleshooting">Troubleshooting</h1>
+
+<h2 id="after-a-successfull-compile-the-arduino-ide-hangs-while-uploading-the-firmware-to-the-flight-controller">After a successfull compile the Arduino IDE hangs while uploading the firmware to the flight controller</h2>
+
+<p>There is a bug with old Arduino bootloaders, you have the following options:</p>
+
+<ol>
+  <li>If you have an AVR-ISP Programmer you can update the bootloader.</li>
+  <li>Change the <code>#define BOOTLOADER_BUGFIX "234fs34567hf"</code> line in your <code>APM_Config.h</code>, replace the string <code>"234fs34567hf"</code> with some random characters and try to upload the firmware again.</li>
+</ol>
+
+<h2 id="my-transmitter-does-not-work">My Transmitter does not work</h2>
+
+<p>If you can move your sticks and the flight controller seams to not register any of your inputs its most likely you forgot configuring your correct RC Input type.
+Please refer the <a href="general_configuration.htm#rc_input_type_configuration" tppabs="http://docs.megapirateng.com/documentation/general_configuration#rc_input_type_configuration">General Configuration</a> documentation.</p>
+
+<h2 id="my-quadcopter-does-not-arm">My quadcopter does not arm!</h2>
+
+<p>The Megapirate checks for magnetometer levels to be right. Try calibrate it first on APM Planner (See <a href="javascript:if(confirm('http://copter.ardupilot.com/wiki/initial-setup/configuring-hardware/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://copter.ardupilot.com/wiki/initial-setup/configuring-hardware/#Calibrate_Compass'" tppabs="http://copter.ardupilot.com/wiki/initial-setup/configuring-hardware/#Calibrate_Compass">Calibrate Compass</a>. On CRIUS V1.1 it might be not arm even when calibrated, for that just get a magnet and make a circle arround the Crius Board and try again.</p>
+
+<p>If you want to know more details about why it does not arm your quadcopter, take a look in <a href="javascript:if(confirm('http://copter.ardupilot.com/wiki/prearm_safety_check/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://copter.ardupilot.com/wiki/prearm_safety_check/'" tppabs="http://copter.ardupilot.com/wiki/prearm_safety_check/">Pre-Arm Safety Check</a></p>
+
+        </div>
+    </body>
+
+</html>

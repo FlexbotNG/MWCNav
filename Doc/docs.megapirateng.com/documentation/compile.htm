@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>Compile the MegaPirateNG from source | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/compile.md  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/compile.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/compile.md">Edit page</a>
+            </div>
+            <h1 id="install-megapirateng-on-your-flight-controller">Install MegaPirateNG on your flight-controller</h1>
+
+<p>If you just want to install MegaPirateNG on your flight-controller we recommend our <a href="flashtool.htm" tppabs="http://docs.megapirateng.com/documentation/flashtool">FlashTool</a>, which is supported on Windows and MacOSX.</p>
+
+<p>If you want to compile it yourself or have special configuration needs that are not possible with the FlashTool, follow this page.</p>
+
+<h1 id="how-to-compile-megapirateng-from-source">How to compile MegaPirateNG from source</h1>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+  <li>
+    <p>ArduPilot-Arduino 1.0.3</p>
+
+    <p>You need a special version of the Arduino software to compile the source.</p>
+
+    <ul>
+      <li><a href="javascript:if(confirm('http://firmware.diydrones.com/Tools/Arduino/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows.zip  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='http://firmware.diydrones.com/Tools/Arduino/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows.zip'" tppabs="http://firmware.diydrones.com/Tools/Arduino/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows.zip">ArduPilot-Arduino-1.0.3 for Windows with GCC 4.8.2</a> (~190 MB)</li>
+      <li><a href="javascript:if(confirm('http://ardupilot.com/downloads/?did=44  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='http://ardupilot.com/downloads/?did=44'" tppabs="http://ardupilot.com/downloads/?did=44">ArduPilot-Arduino-1.0.3 for MacOSX</a> (~80 MB)</li>
+    </ul>
+  </li>
+  <li>
+    <p>The latest sourcecode</p>
+
+    <ul>
+      <li><a href="javascript:if(confirm('https://github.com/MegaPirateNG/ardupilot-mpng  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='https://github.com/MegaPirateNG/ardupilot-mpng'" tppabs="https://github.com/MegaPirateNG/ardupilot-mpng">MegaPirateNG - APM:Copter</a></li>
+      <li><a href="javascript:if(confirm('https://github.com/smurfy/ardupilot-mpng  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='https://github.com/smurfy/ardupilot-mpng'" tppabs="https://github.com/smurfy/ardupilot-mpng">MegaPirateNG - APM:Plane 2.76</a></li>
+    </ul>
+
+    <p>If you know your way around GIT you also can clone the respective repository from github.com</p>
+  </li>
+</ul>
+
+<h2 id="prepare-your-environment">Prepare your Environment</h2>
+
+<ul>
+  <li>
+    <p>Extract ArduPilot-Arduino 1.0.3, for example to <code>c:\quadcopter</code></p>
+
+    <p>Make sure that the full pathname is not longer than <code>255</code> chars, or you could encounter compile problems.</p>
+
+    <p>You now should have a directory called <code>ArduPilot-Arduino-1.0.3-windows</code> (Windows) or an <code>Arduino</code> application (MacOSX) in the <code>c:\quadcopter</code> directory.</p>
+  </li>
+  <li>
+    <p>Extract the downloaded source code, for example to <code>c:\quadcopter</code></p>
+
+    <p>You now should have a new directory in the <code>c:\quadcopter</code> directory called like the zip file.
+In our example we use the name <code>ardupilot-mpng</code> for this directory.</p>
+  </li>
+  <li>
+    <p><strong><em>Important</em></strong> Replace the shipped <code>pde.jar</code> from the source directory to the ardupilot-arduino software.</p>
+
+    <p>Windows:</p>
+
+    <p>Locate the <code>pde.jar</code> in your sources root directory for example <code>c:\quadcopter\ardupilot-mpng\pde.jar</code>,
+copy and replace the file with the file in <code>c:\quadcopter\ArduPilot-Arduino-1.0.3-windows\lib</code></p>
+
+    <p>MacOSX:</p>
+
+    <p>Locate the <code>pde.jar</code> in your sources root directory for example <code>~username/quadcopter/ardupilot-mpng/pde.jar</code>,
+copy and replace the file with the file in <code>~username/quadcopter/Arduino.app/Contents/Resources/Java</code></p>
+  </li>
+  <li>
+    <p>Start ArduPilot-Arduino</p>
+  </li>
+  <li>
+    <p>Change the target-platform to MegaPirateNG</p>
+
+    <p><img src="../images/compile_arduino_platform.jpg" tppabs="http://docs.megapirateng.com/images/compile_arduino_platform.jpg" alt="Arduino Platform" /></p>
+  </li>
+  <li>
+    <p>Open preferences and set the sketch folder to the source code directory, for example <code>c:\quadcopter\ardupilot-mpng</code></p>
+
+    <p><img src="../images/compile_arduino_preferences1.jpg" tppabs="http://docs.megapirateng.com/images/compile_arduino_preferences1.jpg" alt="Arduino preferences" />
+<img src="../images/compile_arduino_preferences2.jpg" tppabs="http://docs.megapirateng.com/images/compile_arduino_preferences2.jpg" alt="Arduino preferences" /></p>
+
+    <p>You also should uncheck the ‚ÄúUpdate sketch files to new extension on save‚Äù checkbox.</p>
+  </li>
+  <li>
+    <p>Connect your Flight Controller to your Computer and set the Serial Port in the Arduino IDE</p>
+
+    <p><img src="../images/compile_arduino_set_serialport.jpg" tppabs="http://docs.megapirateng.com/images/compile_arduino_set_serialport.jpg" alt="Arduino preferences" /></p>
+  </li>
+  <li>
+    <p><strong><em>Important</em></strong> Restart the Arduino IDE</p>
+  </li>
+</ul>
+
+<h2 id="compiling">Compiling</h2>
+
+<p>Now open your desired APM Autopilot Platform (ArduCopter, ArduPlane‚Ä¶) via <code>File &gt; Sketchbook</code>.</p>
+
+<p>To compile the source code, pressing either the first icon in the toolbar or press <code>ctrl+R</code>.</p>
+
+<p>If your source compiles without a problem you are ready to begin to configure your UAV.</p>
+
+        </div>
+    </body>
+
+</html>

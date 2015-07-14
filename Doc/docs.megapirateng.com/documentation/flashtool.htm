@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+        <title>Using the MegaPirateNG FlashTool | MegaPirateNG</title>
+        <link rel="stylesheet" type="text/css" href="../style.css" tppabs="http://docs.megapirateng.com/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="page-margin">
+                <a href="../index.htm" tppabs="http://docs.megapirateng.com/">
+                    MegaPirateNG
+                    <small>Documentation</small>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <div class="page-margin">
+                <ul>
+                    <li><a href="f4by/F4BY.htm" tppabs="http://docs.megapirateng.com/documentation/f4by/F4BY">F4BY</a></li>
+                    <li><a href="compile.htm" tppabs="http://docs.megapirateng.com/documentation/compile">Getting firmware</a></li>
+                    <li><a href="general_configuration.htm" tppabs="http://docs.megapirateng.com/documentation/general_configuration">General configuration</a></li>
+                    <li><a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting your components</a></li>
+                    <li><a href="troubleshooting.htm" tppabs="http://docs.megapirateng.com/documentation/troubleshooting">Troubleshooting</a></li>
+                    <li><a href="tipsntricks.htm" tppabs="http://docs.megapirateng.com/documentation/tipsntricks">Tips and tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content page-margin">
+            <div class="edit">
+                <a href="javascript:if(confirm('https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/flashtool.md  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/flashtool.md'" tppabs="https://github.com/MegaPirateNG/Docs/edit/gh-pages/documentation/flashtool.md">Edit page</a>
+            </div>
+            <h1 id="use-the-flashtool-to-install-megapirateng">Use the FlashTool to install MegaPirateNG</h1>
+
+<p>There is a dedicated tool available to install MegaPirateNG on you flight-controller.
+The tool is currently only available for Windows and MacOSX.</p>
+
+<p>The latest version is available <a href="javascript:if(confirm('https://github.com/MegaPirateNG/FlashTool/releases  \n\n∏√Œƒº˛Œﬁ∑®”√ Teleport Ultra œ¬‘ÿ, “ÚŒ™ À¸ «“ª∏ˆ”ÚªÚ¬∑æ∂Õ‚≤ø±ª…Ë÷√Œ™À¸µƒ∆Ù ºµÿ÷∑µƒµÿ÷∑°£  \n\nƒ„œÎ‘⁄∑˛ŒÒ∆˜…œ¥Úø™À¸?'))window.location='https://github.com/MegaPirateNG/FlashTool/releases'" tppabs="https://github.com/MegaPirateNG/FlashTool/releases">here</a></p>
+
+<h2 id="what-does-the-flashtool-do">What does the FlashTool do?</h2>
+
+<p>After you select your configuration the tool connects to the MPNG build server and submits your selection.
+The build server then uses the latest code for the selected version and compiles the code for you.
+After a successful build, the flashtool downloads the finished hex file and flashes it to your flight-controller.</p>
+
+<p>Downloaded hex files will also be cached locally, so you only need to download the hex file once.
+If the code changes you automatically get a new hex file.</p>
+
+<h2 id="short-usage-help">Short usage help</h2>
+
+<p><img src="../images/flashtool.png" tppabs="http://docs.megapirateng.com/images/flashtool.png" alt="FlashTool Screenshot" /></p>
+
+<ul>
+  <li>Board Type: List of supported flight-controllers. Select the one you have</li>
+  <li>RC Input: First option is what kind of Receiver you have PPM or PWM. You also can choose the input mapping for the receiver. The default mapping is shown at the <a href="connecting_components.htm" tppabs="http://docs.megapirateng.com/documentation/connecting_components">Connecting components</a> page.</li>
+  <li>APM-Platform: Here you can select the general type of Copter or Plane you have. Special configurations like X or + configuration is set within the Mission Planner, not here</li>
+  <li>GPS Type and Baudrate: Here you can alter your GPS configuration.</li>
+  <li>Version: Some Platforms are available in different versions.</li>
+  <li>Serial Port: The serialport your flight-controller is connected to. You can press the ‚Äúdetect‚Äù button to re-detect existing serial-ports on your computer. </li>
+</ul>
+
+<p>After selecting all options simple press the ‚ÄúFlash‚Äù button to download and install the firmware to your flight-controller.</p>
+
+<h2 id="what-the-strange-name-of-the-hex-file">What the strange name of the hex file?</h2>
+
+<p>The first part of the hex name is a md5 hash of your configuration, the second part is the sha1 hash of the last commit of the code the hex file is based on.</p>
+
+        </div>
+    </body>
+
+</html>
